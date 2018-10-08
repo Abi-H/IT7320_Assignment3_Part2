@@ -1,33 +1,13 @@
 package com.it7320.Assigment3_IT7320_Part2;
 
 public class House {
-	int pricePerSquareMetre, squareMetres, bedrooms, bathrooms, bedroomPrice, bathroomPrice;
+	int pricePerSquareMetre, squareMetres;
 	String houseType;
 	
-	public House(int squareMetres, int bedrooms, int bathrooms, String houseType) {
+	public House(int squareMetres, String houseType) {
 		setHouseType(houseType);
-		setBedrooms(bedrooms);
-		setBathrooms(bathrooms);
 		setSquareMetres(squareMetres);
 		setPricePerSquareMetre(getHouseType());
-		this.bedroomPrice = 30000;
-		this.bathroomPrice = 25000;
-	}
-
-	public int getBathrooms() {
-		return bathrooms;
-	}
-
-	public void setBathrooms(int bathrooms) {
-		this.bathrooms = bathrooms;
-	}
-
-	public int getBedrooms() {
-		return bedrooms;
-	}
-
-	public void setBedrooms(int bedrooms) {
-		this.bedrooms = bedrooms;
 	}
 
 	public int getPricePerSquareMetre() {
@@ -67,11 +47,7 @@ public class House {
 		return getTotalPrice() <= budget;
 	}
 	
-	public int bedroomsPerBathrooms() {
-		return getBedrooms()/getBathrooms();
-	}
-	
 	public int getTotalPrice() {
-		return (pricePerSquareMetre*squareMetres) + (getBathrooms()*bathroomPrice) + (getBedrooms()*bedroomPrice);
+		return pricePerSquareMetre*squareMetres;
 	}
 }

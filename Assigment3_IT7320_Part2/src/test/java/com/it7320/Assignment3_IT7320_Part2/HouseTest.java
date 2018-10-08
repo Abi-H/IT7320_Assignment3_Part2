@@ -9,30 +9,25 @@ import org.junit.Test;
 import com.it7320.Assigment3_IT7320_Part2.House;
 
 public class HouseTest {
-	
-	House basicHouse, basicHouse1, basicHouse2, basicHouse3, deluxeHouse, customHouse, deluxeCustomHouse;
-	int budget, basicPerMetre, deluxePerMetre, customPerMetre, deluxeCustomPerMetre;
+
+	House basicHouse, customHouse, deluxeHouse, deluxeCustomHouse;
+	int budget, basicSize, deluxeSize, customSize, deluxeCustomSize, smallBudget, modestBudget, largeBudget, maxBudget;
 
 	@Before
 	public void setUp() throws Exception {
-		basicPerMetre = 160;
-		deluxePerMetre = 240;
-		customPerMetre= 320;
-		customPerMetre = 400;
-		
-//		basicHouse1 = new House(basicPerMetre, 1, 1, "basic");
-//		basicHouse2 = new House(basicPerMetre, 2, 1, "basic");
-//		basicHouse3 = new House(basicPerMetre, 3, 2, "basic");
-		
-		basicHouse = new House(basicPerMetre, 1, 1, "basic");
-		
-		deluxeHouse = new House(deluxePerMetre, 1, 1, "deluxe");
-		
-		customHouse = new House(customPerMetre,1, 1, "custom");
-		
-		deluxeCustomHouse = new House(deluxeCustomPerMetre, 1, 1, "deluxe custom");	
-		
-		budget = 250000;
+		basicSize = 160;
+		deluxeSize = 240;
+		customSize = 320;
+		deluxeCustomSize = 400;
+		smallBudget = 100000;
+		modestBudget = 250000;
+		largeBudget = 500000;
+		maxBudget = 1000000;
+
+		basicHouse = new House(basicSize, "basic");
+		deluxeHouse = new House(deluxeSize, "deluxe");
+		customHouse = new House(customSize, "custom");
+		deluxeCustomHouse = new House(deluxeCustomSize, "deluxe custom");
 	}
 
 	@After
@@ -44,17 +39,35 @@ public class HouseTest {
 	}
 
 	@Test
-	public void testWithinBudget() {
-		assertTrue(basicHouse.withinBudget(budget));	
-		assertTrue(deluxeHouse.withinBudget(budget));
-		assertFalse(customHouse.withinBudget(budget));
-		assertFalse(deluxeCustomHouse.withinBudget(budget));
+	public void testWithinSmallBudget() {
+		assertTrue(basicHouse.withinBudget(smallBudget));
+		assertFalse(deluxeHouse.withinBudget(smallBudget));
+		assertFalse(customHouse.withinBudget(smallBudget));
+		assertFalse(deluxeCustomHouse.withinBudget(smallBudget));
+	}
+
+	@Test
+	public void testWithinModestBudget() {
+		assertTrue(basicHouse.withinBudget(modestBudget));
+		assertTrue(deluxeHouse.withinBudget(modestBudget));
+		assertFalse(customHouse.withinBudget(modestBudget));
+		assertFalse(deluxeCustomHouse.withinBudget(modestBudget));
+	}
+
+	@Test
+	public void testWithinLargeBudget() {
+		assertTrue(basicHouse.withinBudget(largeBudget));
+		assertTrue(deluxeHouse.withinBudget(largeBudget));
+		assertTrue(customHouse.withinBudget(largeBudget));
+		assertFalse(deluxeCustomHouse.withinBudget(largeBudget));
 	}
 	
 	@Test
-	public void testBasicHouse() {
-		
+	public void testWithinMaxBudget() {
+		assertTrue(basicHouse.withinBudget(maxBudget));
+		assertTrue(deluxeHouse.withinBudget(maxBudget));
+		assertTrue(customHouse.withinBudget(maxBudget));
+		assertTrue(deluxeCustomHouse.withinBudget(maxBudget));
 	}
-	
 
 }
